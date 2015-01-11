@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150111110006) do
+ActiveRecord::Schema.define(version: 20150111111913) do
+
+  create_table "relations", force: true do |t|
+    t.integer "user1"
+    t.integer "user2"
+  end
+
+  add_index "relations", ["user1"], name: "index_relations_on_user1"
 
   create_table "users", force: true do |t|
     t.string   "nickname",             default: "newbie",           null: false
