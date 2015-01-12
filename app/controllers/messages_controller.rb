@@ -40,6 +40,8 @@ class MessagesController < ApplicationController
   # PATCH/PUT /messages/1
   # PATCH/PUT /messages/1.json
   def update
+    puts "ID::#{params[:id]}"
+    @message = Message.find(params[:id])
     respond_to do |format|
       if @message.update(message_params)
         format.html { redirect_to @message, notice: 'Message was successfully updated.' }
