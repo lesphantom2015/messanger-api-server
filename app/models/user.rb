@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
 
 	def send_welcome_msg
 		#not implemented yet
+		UserMailer.welcome(self).deliver
 		true
 	end
 end

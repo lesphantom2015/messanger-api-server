@@ -1,10 +1,25 @@
 class MessagesController < ApplicationController
   before_action :set_message, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:in_messages_index, :out_messages_index]
 
   # GET /messages
   # GET /messages.json
   def index
     @messages = Message.all
+  end
+
+  # GET /users/1/in_messages
+  def in_messages_index
+    respond_to do |format|
+      format.json { render json: @user.in_messages, status: :ok }
+    end
+  end
+
+  # GET /users/1/out_messages
+  def out_messages_index
+    respond_to do |format|
+      format.json { render json: @user.out_messages, status: :ok }
+    end
   end
 
   # GET /messages/1
@@ -67,6 +82,10 @@ class MessagesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_message
       @message = Message.find(params[:id])
+    end
+
+    def set_user
+      @user = User.find(params[:user_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

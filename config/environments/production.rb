@@ -80,4 +80,20 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+
+
+######## Below are non-auto generated configs ##########
+  # Mailer
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_options = {
+    from: "lesphantom2015@outlook.com"
+  }
+  config.action_mailer.smtp_settings = {
+    address: "smtp-mail.outlook.com",
+    port: "587",
+    user_name: "lesphantom2015@outlook.com",
+    password: "qinglian@343434",
+    authentication:       'plain'
+  }
 end

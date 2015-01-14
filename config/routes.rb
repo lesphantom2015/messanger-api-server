@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
+  
   resources :messages
-
-  resources :users
+  resources :users do
+    get 'in_messages' => 'messages#in_messages_index'
+    get 'out_messages' => 'messages#out_messages_index'
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
