@@ -11,14 +11,14 @@ class MessagesController < ApplicationController
   # GET /users/1/in_messages
   def in_messages_index
     respond_to do |format|
-      format.json { render json: @user.in_messages, status: :ok }
+      format.json { render json: @user.in_messages.to_json( include: { sender: {only: :nickname}}, except: [:id, :updated_at]), status: :ok }
     end
   end
 
   # GET /users/1/out_messages
   def out_messages_index
     respond_to do |format|
-      format.json { render json: @user.out_messages, status: :ok }
+      format.json { render json: @user.out_messages.to_json( include: { receiver: { only: :nickname }}, except: [:id, :updated_at]), status: :ok }
     end
   end
 
