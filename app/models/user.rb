@@ -1,4 +1,10 @@
 class User < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :token_authenticatable, :confirmable,
+  # :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
+	validates :nickname, presence: true
 	has_many :in_messages, class_name: "Message", foreign_key: "user2"
 	has_many :out_messages, class_name: "Message", foreign_key: "user1"
 	has_many :relationships, class_name: "Relation", foreign_key: "user1"

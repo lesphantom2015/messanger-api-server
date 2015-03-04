@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  devise_for :users
   resources :messages
   resources :users do
     get 'in_messages' => 'messages#in_messages_index'
